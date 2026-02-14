@@ -4,14 +4,16 @@ Git checkpoints for Claude Code. Auto-commits at milestones, smart branching, an
 
 ## Installation
 
-```
-claude plugin install /Users/meszmate/checkpoints
+From your terminal:
+
+```sh
+claude plugin install meszmate/checkpoints
 ```
 
 Or from within Claude Code:
 
 ```
-/plugin install /Users/meszmate/checkpoints
+/install-plugin meszmate/checkpoints
 ```
 
 ## Commands
