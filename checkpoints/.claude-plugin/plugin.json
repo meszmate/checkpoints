@@ -1,0 +1,8 @@
+{
+  "name": "checkpoints",
+  "description": "Git checkpoints for Claude Code. Auto-commits at milestones, smart branching, and open pull requests without leaving your terminal.",
+  "version": "1.0.0",
+  "author": {
+    "name": "meszmate"
+  }
+}
