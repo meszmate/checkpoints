@@ -6,6 +6,11 @@
           "type": "command",
           "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/session-check.sh",
           "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/auto-checkpoint-reminder.sh",
+          "timeout": 3
         }
       ]
     }
