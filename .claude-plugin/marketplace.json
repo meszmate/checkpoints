@@ -1,0 +1,10 @@
+{
+  "name": "checkpoints",
+  "description": "Marketplace for the checkpoints plugin",
+  "plugins": [
+    {
+      "name": "checkpoints",
+      "path": "."
+    }
+  ]
+}
