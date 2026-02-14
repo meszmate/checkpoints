@@ -1,10 +1,20 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "checkpoints",
   "description": "Marketplace for the checkpoints plugin",
+  "owner": {
+    "name": "meszmate"
+  },
   "plugins": [
     {
       "name": "checkpoints",
-      "path": "."
+      "description": "Git checkpoints for Claude Code. Auto-commits at milestones, smart branching, and open pull requests without leaving your terminal.",
+      "version": "1.0.0",
+      "author": {
+        "name": "meszmate"
+      },
+      "source": ".",
+      "category": "development"
     }
   ]
 }
