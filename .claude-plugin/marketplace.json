@@ -13,7 +13,10 @@
       "author": {
         "name": "meszmate"
       },
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "meszmate/checkpoints"
+      },
       "category": "development"
     }
   ]
