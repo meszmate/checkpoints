@@ -64,22 +64,11 @@ Push the current branch and create a pull request.
 
 Uses `gh` CLI if available, otherwise prints a manual GitHub URL.
 
-### `/auto-checkpoint [on|off]`
-
-Check or change auto-checkpointing status.
-
-```
-/auto-checkpoint          # show current status
-/auto-checkpoint on       # enable
-/auto-checkpoint off      # disable
-/auto-checkpoint toggle   # toggle current state
-```
-
 ## Auto-Checkpointing
 
-The plugin includes an auto-checkpoint skill that automatically creates commits when significant milestones are reached (completing a feature, fixing a bug, finishing a refactor). Minor changes like typo fixes are ignored.
+The plugin includes a checkpoint skill that automatically creates commits when significant milestones are reached (completing a feature, fixing a bug, finishing a refactor). Unlike `/checkpoint`, this skill stages files selectively and generates proper conventional commit messages by analyzing the diff.
 
-**Auto-checkpointing is off by default.** Enable it with `/auto-checkpoint on`. The current status is shown at the start of each session.
+To use it, tell the AI to use the checkpoint skill — for example, add something like **"use the checkpoint skill after completing tasks"** to your `CLAUDE.md` or project instructions.
 
 ## Git Identity
 

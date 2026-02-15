@@ -37,13 +37,6 @@ else
     warnings="${warnings}[checkpoints] Note: gh CLI is not installed. /pull will provide manual URLs instead. Install from https://cli.github.com\n"
 fi
 
-# Show auto-checkpoint status
-if [ -f "$HOME/.checkpoints-auto" ]; then
-    warnings="${warnings}[checkpoints] Auto-checkpointing: on. Toggle with /auto-checkpoint.\n"
-else
-    warnings="${warnings}[checkpoints] Auto-checkpointing: off. Toggle with /auto-checkpoint.\n"
-fi
-
 # Output warnings if any
 if [ -n "$warnings" ]; then
     printf "%b" "$warnings"

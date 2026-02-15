@@ -1,17 +1,11 @@
 ---
-name: auto-checkpoint
+name: checkpoint
 description: Automatically creates git checkpoint commits when significant milestones are reached. Triggers on keywords like checkpoint, milestone, significant progress, feature complete, bug fixed, refactor done, implementation complete, setup done.
 ---
 
-# Auto-Checkpoint Skill
+# Checkpoint Skill
 
-**Before doing anything, check if auto-checkpointing is enabled** by running:
-```
-test -f ~/.checkpoints-auto && echo "ON" || echo "OFF"
-```
-If the result is "OFF", do **nothing** — do not create a checkpoint. Auto-checkpointing is off by default. The user can enable it with `/auto-checkpoint on`.
-
-When enabled, you should automatically create a checkpoint commit when you have completed a significant piece of work. This skill helps track progress without the user needing to manually run `/checkpoint`.
+Automatically create a checkpoint commit when you have completed a significant piece of work. This skill helps track progress without the user needing to manually run `/checkpoint`.
 
 ## When to Checkpoint
 
@@ -32,16 +26,20 @@ Do **not** create a checkpoint for:
 
 ## How to Checkpoint
 
-1. First, verify git identity is configured:
+1. Verify git identity is configured:
    - Run `git config user.name` and `git config user.email`
    - If either is missing, warn the user and do **not** commit. Never set git identity yourself.
 
-2. Run the checkpoint script with a conventional commit message:
-   ```
-   sh ${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint.sh "<type>: <concise description>"
-   ```
+2. Run `git status` to see staged, unstaged, and untracked files.
 
-   Use conventional commit prefixes:
+3. Stage files selectively:
+   - Use `git add -u` to stage tracked (modified/deleted) files.
+   - For new files that were created as part of the current work, add them specifically with `git add <file>`.
+   - Do **not** use `git add -A` — avoid blindly staging unrelated files.
+
+4. Run `git diff --cached` to analyze the staged changes.
+
+5. Generate a conventional commit message based on the diff. Use these prefixes:
    - `feat:` — new feature
    - `fix:` — bug fix
    - `refactor:` — code restructuring
@@ -51,12 +49,14 @@ Do **not** create a checkpoint for:
    - `style:` — formatting, whitespace
    - `perf:` — performance improvements
 
-3. Keep messages concise and descriptive (under 72 characters).
+6. Run `git commit -m "<type>: <concise description>"`. Keep messages under 72 characters.
 
-4. After the checkpoint, briefly inform the user that a checkpoint was saved.
+7. Show a summary: run `git diff --stat HEAD~1` to display what changed.
+
+8. Briefly inform the user that a checkpoint was saved.
 
 ## Important
 
 - **Never** run `git config user.name "..."` or `git config user.email "..."` to set values.
 - All commits must use the user's own git identity.
-- If the checkpoint script fails, report the error to the user without retrying.
+- If the commit fails, report the error to the user without retrying.
