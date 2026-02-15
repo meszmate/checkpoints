@@ -52,6 +52,14 @@ Quick snapshot. Stages everything and commits instantly with an auto-generated m
 → checkpoint: add user model and migration
 ```
 
+### `/push`
+
+Push the current branch to the remote. Warns if there are uncommitted changes.
+
+```
+/push
+```
+
 ### `/pull [--draft] [title]`
 
 Push the current branch and create a pull request.
