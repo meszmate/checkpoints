@@ -29,6 +29,11 @@ Amend the most recent git commit — stage current changes into it and regenerat
    - Use the previous commit message (from step 2) as a starting point. Generate a conventional commit message that covers both the original and newly staged changes. Use these prefixes: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, `style:`, `test:`, `perf:`, `ci:`, `build:`. Keep the message concise (under 72 characters for the subject line).
    - If `$ARGUMENTS` is provided, treat it as **instructions** for how to phrase or focus the message — not as the literal commit message.
 
-7. Run `git commit --amend -m "<message>"`.
+7. Run `git commit --amend -m "<message>"`. Do **not** append `Co-Authored-By` trailers or any other attribution — commits must only show the user's git identity.
 
 8. Show a summary: run `git diff --stat HEAD~1` to display files changed, insertions, and deletions.
+
+**Writing style rules:**
+- Write like a human developer — short, direct, no fluff.
+- Do **not** use em dashes (—), semicolons for joining clauses, or formal/flowery language.
+- Do **not** add verbose commit bodies unless the change truly needs explanation. A subject line is usually enough.

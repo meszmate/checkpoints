@@ -18,7 +18,7 @@ Take a quick checkpoint snapshot of the current state. No questions asked — ju
    - Run `git diff --stat` and `git diff --name-only` to see what changed.
    - Generate a concise description (a few words) of the changes.
 
-3. Run the checkpoint script with the generated message:
+3. Run the checkpoint script with the generated message. Do **not** append `Co-Authored-By` trailers — the commit message must be clean, with no attribution lines:
    ```
    sh ${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint.sh "checkpoint: <brief description>"
    ```

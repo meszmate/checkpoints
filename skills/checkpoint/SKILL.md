@@ -49,7 +49,7 @@ Do **not** create a checkpoint for:
    - `style:` — formatting, whitespace
    - `perf:` — performance improvements
 
-6. Run `git commit -m "<type>: <concise description>"`. Keep messages under 72 characters.
+6. Run `git commit -m "<type>: <concise description>"`. Keep messages under 72 characters. Do **not** append `Co-Authored-By` trailers or any other attribution — commits must only show the user's git identity.
 
 7. Show a summary: run `git diff --stat HEAD~1` to display what changed.
 

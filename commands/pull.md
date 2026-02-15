@@ -36,7 +36,14 @@ Push the current branch and create a pull request.
    ```
    git log <default-branch>..<branch> --oneline --no-merges
    ```
-   Format as a markdown list of changes.
+   Format as a short, plain markdown list of changes.
+
+**Writing style rules for titles and PR bodies:**
+- Write like a human developer — keep it casual, short, and direct.
+- Do **not** use em dashes (—), semicolons for joining clauses, or flowery/formal language.
+- Do **not** add `Co-Authored-By` trailers or any AI attribution.
+- Avoid filler phrases like "This PR introduces…", "This change ensures…", or "In order to…". Just say what changed.
+- No bullet points longer than one short sentence.
 
 9. Check if `gh` CLI is available (`command -v gh`):
    - **If yes:** Create the PR:
