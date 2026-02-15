@@ -32,16 +32,16 @@ Create a new git branch from a natural language description.
 → creates branch: fix-header-alignment-bug
 ```
 
-### `/commit [message]`
+### `/commit [instructions]`
 
-Smart commit with optional auto-generated conventional commit messages.
+Smart commit with auto-generated conventional commit messages.
 
 ```
-/commit                          # auto-generates message from diff
-/commit feat: add login form     # uses provided message
+/commit                              # auto-generates message from diff
+/commit only the auth changes        # follows your instructions
 ```
 
-Handles staging interactively — asks before including untracked files.
+Always generates the commit message from the actual diff. If you provide arguments, they're treated as instructions (what to focus on, which files to include) — not as the literal message. Handles staging interactively — asks before including untracked files.
 
 ### `/checkpoint`
 

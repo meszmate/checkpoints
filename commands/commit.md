@@ -1,6 +1,6 @@
 ---
 description: Smart commit with auto-generated conventional commit messages
-argument-hint: "[message]"
+argument-hint: "[instructions]"
 allowed-tools:
   - Bash
   - Read
@@ -22,8 +22,8 @@ Create a git commit, optionally with an auto-generated conventional commit messa
 4. Stage the files the user agreed to include (use `git add <file>` for specific files, or `git add -u` for tracked files only).
 
 5. Determine the commit message:
-   - If `$ARGUMENTS` is provided, use it as the commit message directly.
-   - If no arguments, analyze `git diff --cached` (and `git diff` for context) to generate a conventional commit message. Use these prefixes: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, `style:`, `test:`, `perf:`, `ci:`, `build:`. Keep the message concise (under 72 characters for the subject line).
+   - Analyze `git diff --cached` (and `git diff` for context) to generate a conventional commit message. Use these prefixes: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, `style:`, `test:`, `perf:`, `ci:`, `build:`. Keep the message concise (under 72 characters for the subject line).
+   - If `$ARGUMENTS` is provided, treat it as **instructions** (e.g. what to commit, what to focus on, extra context) — not as the literal commit message. Use the instructions to guide which files to stage and how to phrase the message, but always generate the message from the actual diff.
 
 6. Run `git commit -m "<message>"`.
 
