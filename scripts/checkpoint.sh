@@ -30,18 +30,24 @@ if [ -z "$1" ]; then
 fi
 
 MESSAGE="$1"
+AMEND=""
+if [ "$2" = "--amend" ]; then
+    AMEND="--amend"
+fi
 
-# 4. Check for changes
-if git diff --quiet HEAD 2>/dev/null && git diff --cached --quiet 2>/dev/null && [ -z "$(git ls-files --others --exclude-standard)" ]; then
-    echo "Nothing to commit — working tree is clean."
-    exit 4
+# 4. Check for changes (skip when amending — amend can reword without new changes)
+if [ -z "$AMEND" ]; then
+    if git diff --quiet HEAD 2>/dev/null && git diff --cached --quiet 2>/dev/null && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+        echo "Nothing to commit — working tree is clean."
+        exit 4
+    fi
 fi
 
 # 5. Stage all changes
 git add -A
 
 # 6. Commit
-git commit -m "$MESSAGE"
+git commit $AMEND -m "$MESSAGE"
 
 # 7. Output summary
 echo ""
