@@ -4,7 +4,12 @@
     "PreToolUse": [
       {
         "matcher": "Bash",
-        "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/strip-attribution.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/strip-attribution.sh"
+          }
+        ]
       }
     ]
   }
