@@ -35,6 +35,9 @@ if [ "$2" = "--amend" ]; then
     AMEND="--amend"
 fi
 
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+ROOT="$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)"
+
 # 4. Check for changes (skip when amending — amend can reword without new changes)
 if [ -z "$AMEND" ]; then
     if git diff --quiet HEAD 2>/dev/null && git diff --cached --quiet 2>/dev/null && [ -z "$(git ls-files --others --exclude-standard)" ]; then
@@ -46,8 +49,12 @@ fi
 # 5. Stage all changes
 git add -A
 
-# 6. Commit
-git commit $AMEND -m "$MESSAGE"
+# 6. Commit using safe wrapper that enforces local commit-msg hook sanitization
+if [ -n "$AMEND" ]; then
+    sh "$ROOT/scripts/commit-safe.sh" --amend "$MESSAGE"
+else
+    sh "$ROOT/scripts/commit-safe.sh" "$MESSAGE"
+fi
 
 # 7. Output summary
 echo ""

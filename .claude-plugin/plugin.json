@@ -1,6 +1,6 @@
 {
   "name": "checkpoints",
-  "description": "Git checkpoints for Claude Code. Auto-commits at milestones, smart branching, and open pull requests without leaving your terminal.",
+  "description": "Git checkpoints for AI coding agents, with first-class Claude Code support.",
   "version": "1.0.0",
   "author": {
     "name": "meszmate"

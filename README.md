@@ -1,8 +1,10 @@
 # Checkpoints
 
-Git checkpoints for Claude Code. Auto-commits at milestones, smart branching, and open pull requests without leaving your terminal.
+Git checkpoints for AI coding agents. Auto-commits at milestones, smart branching, and open pull requests without leaving your terminal.
 
 ## Installation
+
+### Claude Code plugin
 
 Add the marketplace and install the plugin:
 
@@ -17,6 +19,34 @@ Or from your terminal:
 claude plugin marketplace add meszmate/checkpoints
 claude plugin install checkpoints@checkpoints
 ```
+
+### Any AI agent (Codex, Cursor, Aider, etc.)
+
+Use this repo directly and point your agent instructions to `AGENTS.md`.
+
+1. Clone this repo somewhere on disk.
+2. Set `CHECKPOINTS_ROOT` to the clone path.
+3. Tell your agent to follow `<CHECKPOINTS_ROOT>/AGENTS.md` for git workflows.
+
+Example shell setup:
+
+```sh
+export CHECKPOINTS_ROOT="/Users/meszmate/checkpoints"
+```
+
+Most agents support a project instruction file. If yours does not, paste the key workflow rules from `AGENTS.md` into its system/project prompt.
+
+To hard-enforce no AI attribution trailers even for direct `git commit`, set commit hooks for the current repo:
+
+```sh
+git config core.hooksPath "$CHECKPOINTS_ROOT/githooks"
+```
+
+### App-specific setup guides
+
+For step-by-step setup in Codex, Cursor, Claude Code, Aider, Cline, and Copilot:
+
+- See `docs/agent-setup.md`
 
 ## Commands
 
@@ -45,11 +75,11 @@ Always generates the commit message from the actual diff. If you provide argumen
 
 ### `/checkpoint`
 
-Quick snapshot. Stages everything and commits instantly with an auto-generated message. No questions asked.
+Quick snapshot. Stages everything and commits instantly with an auto-generated conventional single-line subject. No questions asked.
 
 ```
 /checkpoint
-→ checkpoint: add user model and migration
+→ feat: add user model and migration
 ```
 
 ### `/push`
@@ -74,9 +104,9 @@ Uses `gh` CLI if available, otherwise prints a manual GitHub URL.
 
 ## Auto-Checkpointing
 
-The plugin includes a checkpoint skill that automatically creates commits when significant milestones are reached (completing a feature, fixing a bug, finishing a refactor). Unlike `/checkpoint`, this skill stages files selectively and generates proper conventional commit messages by analyzing the diff.
+The repo includes a checkpoint skill that automatically creates commits when significant milestones are reached (completing a feature, fixing a bug, finishing a refactor). Unlike `/checkpoint`, this skill stages files selectively and generates proper conventional commit messages by analyzing the diff.
 
-To use it, tell the AI to use the checkpoint skill — for example, add something like **"use the checkpoint skill after completing tasks"** to your `CLAUDE.md` or project instructions.
+To use it, tell your AI agent to use the checkpoint skill after completing meaningful tasks.
 
 ## Git Identity
 

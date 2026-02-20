@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/strip-attribution.sh"
+            "command": "sh ${CLAUDE_PLUGIN_ROOT:-${CHECKPOINTS_ROOT}}/hooks/strip-attribution.sh"
           }
         ]
       }
